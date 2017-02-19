@@ -11,7 +11,7 @@ class Ticket
   end
 
   def self.delete_all
-    sql = "DELETE  FROM tickets;"
+    sql = "DELETE FROM tickets;"
     SqlRunner.run(sql)
   end
 
@@ -45,5 +45,16 @@ class Ticket
     sql = "SELECT * FROM tickets"
     return self.get_many(sql) 
   end
-  
+
+
+  def self.mpf
+    film_id_count = "SELECT film_id, COUNT (film_id) AS film_id_count FROM tickets GROUP BY film_id ORDER BY film_id_count DESC LIMIT 1;"
+    # sql = "SELECT * FROM films WHERE id = #{film_id_count}"
+    # film = sql.map{|film| Film.new(film)}
+    return film_id_count
+
+
+  end
+
+
 end

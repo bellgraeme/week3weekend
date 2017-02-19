@@ -16,5 +16,4 @@ class Cinema
     return ticket_sold
   end
 
-
 end
