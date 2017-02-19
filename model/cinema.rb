@@ -11,7 +11,7 @@ class Cinema
     customer.funds = customer.funds - film.price
     customer.update()
     @funds += film.price
-    ticket_sold = Ticket.new({'customer_id' => customer.id, 'film_id' => film.id ,'show' => 2300})
+    ticket_sold = Ticket.new({'customer_id' => customer.id, 'film_id' => film.id ,'show' => '23:00'})
     ticket_sold.save()
     return ticket_sold
   end

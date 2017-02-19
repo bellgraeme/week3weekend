@@ -25,14 +25,14 @@ class Ticket
     sql = "INSERT INTO tickets
      (customer_id, film_id, show)
       VALUES 
-      ( #{@customer_id}, #{@film_id}, #{@show})
+      ( #{@customer_id}, #{@film_id}, time '#{@show}')
        RETURNING id;" 
     ticket = SqlRunner.run(sql)[0]
     @id = ticket['id'].to_i
   end
 
   def update
-    sql = "UPDATE tickets SET (customer_id, film_id, show) = (#{@customer_id}, #{@film_id}, #{@show}) WHERE id = #{@id};"
+    sql = "UPDATE tickets SET (customer_id, film_id, show) = (#{@customer_id}, #{@film_id}, time '#{@show}') WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 

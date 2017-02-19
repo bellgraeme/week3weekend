@@ -34,16 +34,16 @@ film3.save()
 film4 = Film.new('title' => 'Star Trekking through the Universe', 'price' => 7)
 film4.save()
 
-ticket1 = Ticket.new('customer_id' => customer1.id, 'film_id' => film1.id, 'show' => 1300)
+ticket1 = Ticket.new('customer_id' => customer1.id, 'film_id' => film1.id, 'show' => '13:00')
 ticket1.save()
 
-ticket2 = Ticket.new('customer_id' => customer2.id, 'film_id' => film2.id, 'show' => 1400)
+ticket2 = Ticket.new('customer_id' => customer2.id, 'film_id' => film2.id, 'show' => '14:00')
 ticket2.save()
 
-ticket3 = Ticket.new('customer_id' => customer3.id, 'film_id' => film3.id, 'show' => 1500)
+ticket3 = Ticket.new('customer_id' => customer3.id, 'film_id' => film3.id, 'show' => '15:00')
 ticket3.save()
 
-ticket4 = Ticket.new('customer_id' => customer4.id, 'film_id' => film4.id, 'show' => 1600)
+ticket4 = Ticket.new('customer_id' => customer4.id, 'film_id' => film4.id, 'show' => '16:00')
 ticket4.save()
 
 ticket5 = cinema.sell_ticket(customer4, film2)
