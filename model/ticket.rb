@@ -8,6 +8,7 @@ class Ticket
     @id = options['id'] if options['id']
     @customer_id = options['customer_id'].to_i
     @film_id = options['film_id'].to_i
+    @show = options['show']
   end
 
   def self.delete_all
@@ -22,16 +23,16 @@ class Ticket
 
   def save()
     sql = "INSERT INTO tickets
-     (customer_id, film_id)
+     (customer_id, film_id, show)
       VALUES 
-      ( #{@customer_id} , #{@film_id} )
+      ( #{@customer_id}, #{@film_id}, #{@show})
        RETURNING id;" 
     ticket = SqlRunner.run(sql)[0]
     @id = ticket['id'].to_i
   end
 
   def update
-    sql = "UPDATE tickets SET (customer_id, film_id) = (#{@customer_id}, #{@film_id}) WHERE id = #{@id};"
+    sql = "UPDATE tickets SET (customer_id, film_id, show) = (#{@customer_id}, #{@film_id}, #{@show}) WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 
@@ -46,15 +47,6 @@ class Ticket
     return self.get_many(sql) 
   end
 
-
-  def self.mpf
-    film_id_count = "SELECT film_id, COUNT (film_id) AS film_id_count FROM tickets GROUP BY film_id ORDER BY film_id_count DESC LIMIT 1;"
-    # sql = "SELECT * FROM films WHERE id = #{film_id_count}"
-    # film = sql.map{|film| Film.new(film)}
-    return film_id_count
-
-
-  end
 
 
 end

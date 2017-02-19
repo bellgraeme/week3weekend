@@ -50,14 +50,11 @@ class Film
   end
 
   def self.mpf
-    sql1 = "SELECT film_id, COUNT (film_id) AS film_id_count FROM tickets GROUP BY film_id ORDER BY film_id_count DESC LIMIT 1;"
-    id = SqlRunner.run(sql1)
+    sql = "SELECT film_id, COUNT (film_id) AS film_id_count FROM tickets GROUP BY film_id ORDER BY film_id_count DESC LIMIT 1;"
+    id = SqlRunner.run(sql)
    film = "SELECT * FROM films where id = #{id[0]['film_id']}"
    result = SqlRunner.run(film)
-
-    return result[0]
-
-
+  return result[0]
   end
 
 end
